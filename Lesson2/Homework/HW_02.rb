@@ -92,41 +92,34 @@ too_high_message = "You guessed too high, try a lower number next time."
 puts "What is your first guess?"
 player_guess = gets.chomp.to_i
 
-# If the players guess is the secret number print they win, if not deduct a guess and give them another go
+# If the guess is correct abort the game
 if player_guess == secret_number
     abort winner_message
-else
-    guesses_left -= 1
-    puts "Sorry, thats incorrect. You have #{guesses_left} guesses left"
-    if player_guess < secret_number
-        puts too_low_message
-    else
-        puts too_high_message
+end
+
+# If the guess is incorrect loop round until it is correct or the player runs out of guesses
+while guesses_left > 1
+
+    if player_guess != secret_number
+        puts "Sorry, thats incorrect. You have #{guesses_left} guesses left"
+        if player_guess < secret_number
+            puts too_low_message
+        else
+            puts too_high_message
+        end
     end
-end
 
-# If the players guess is the secret number print they win, if not deduct a guess and give them another go
-player_guess = gets.chomp.to_i
-
-if player_guess == secret_number
-    abort winner_message
-else
     guesses_left -= 1
-    puts "Sorry, thats incorrect. You have #{guesses_left} guesses left"
-    if player_guess < secret_number
-        puts too_low_message
-    else
-        puts too_high_message
+
+    puts "What is your next guess?"
+    player_guess = gets.chomp.to_i
+
+    if player_guess == secret_number
+        abort winner_message
     end
+
 end
 
-# If the players guess is the secret number print they win, if not print they lose
-player_guess = gets.chomp.to_i
-
-if player_guess == secret_number
-    abort winner_message
-else
-    guesses_left -= 1
-    puts "Sorry, thats incorrect. You have lost the Secret Number Game!"
-    puts "The Secret number was #{secret_number}!"
-end
+# If all guesses are incorrect then put losing message
+puts "Sorry, thats incorrect. You have lost the Secret Number Game!"
+puts "The Secret number was #{secret_number}!"
