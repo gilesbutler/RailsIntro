@@ -93,21 +93,24 @@ messages = {
     puts "What is your #{guess_text} guess?"
     player_guess = gets.chomp.to_i
 
-    # If the guess is correct abort the game
+    # If the guess is correct break out of the loop
     if player_guess == secret_number
-        abort messages[:win]
+        break puts messages[:win]
+    end
+
+    # If the guess is incorrect subtract a guess and tell the user if it was too high or too low
+    guesses_left -= 1
+    puts "Sorry, thats incorrect #{player_name}. You have #{guesses_left} guesses left"
+    if player_guess < secret_number
+        puts messages[:too_low]
     else
-        guesses_left -= 1
-        puts "Sorry, thats incorrect #{player_name}. You have #{guesses_left} guesses left"
-        if player_guess < secret_number
-            puts messages[:too_low]
-        else
-            puts messages[:too_high]
-        end
+        puts messages[:too_high]
     end
 
 end
 
-# If all guesses are incorrect then put losing message
-puts messages[:lose]
-puts "The Secret number was #{secret_number}!"
+if guesses_left == 0
+    # If all guesses are incorrect then put losing message
+    puts messages[:lose]
+    puts "The Secret number was #{secret_number}!"
+end
