@@ -58,7 +58,7 @@ puts "Welcome to the Secret Number Game by Giles Butler"
 
 #Get players name, store it in a variable and capitalize it
 puts "What is your name?"
-player_name = gets.chomp.capitalize!
+player_name = gets.chomp.capitalize
 
 # Print Instructions
 puts "Hi #{player_name}! You have 3 guesses to guess the Secret Number between 1 and 10."
@@ -77,40 +77,40 @@ secret_number = set_of_numbers.sample
 
 # Store player messages
 messages = {
-    win: "Congratulations #{player_name} you won the Secret Number Game!",
-    lose: "Sorry, thats incorrect #{player_name}. You have lost the Secret Number Game!",
-    too_low: "You guessed too low, try a higher number next time.",
-    too_high: "You guessed too high, try a lower number next time."
+  win: "Congratulations #{player_name} you won the Secret Number Game!",
+  lose: "Sorry, thats incorrect #{player_name}. You have lost the Secret Number Game!",
+  too_low: "You guessed too low, try a higher number next time.",
+  too_high: "You guessed too high, try a lower number next time."
 }
 
 # Loop through the game asking the player to guess and checking their answer
 3.times do
 
-    # Decide whether its the first guess or subsequent guesses
-    guess_text = guesses_left == 3 ? 'first' : 'next'
+  # Decide whether its the first guess or subsequent guesses
+  guess_text = guesses_left == 3 ? 'first' : 'next'
 
-    # Print and store players first guess
-    puts "What is your #{guess_text} guess?"
-    player_guess = gets.chomp.to_i
+  # Print and store players first guess
+  puts "What is your #{guess_text} guess?"
+  player_guess = gets.chomp.to_i
 
-    # If the guess is correct break out of the loop
-    if player_guess == secret_number
-        break puts messages[:win]
-    end
+  # If the guess is correct break out of the loop
+  if player_guess == secret_number
+    break puts messages[:win]
+  end
 
-    # If the guess is incorrect subtract a guess and tell the user if it was too high or too low
-    guesses_left -= 1
-    puts "Sorry, thats incorrect #{player_name}. You have #{guesses_left} guesses left"
-    if player_guess < secret_number
-        puts messages[:too_low]
-    else
-        puts messages[:too_high]
-    end
+  # If the guess is incorrect subtract a guess and tell the user if it was too high or too low
+  guesses_left -= 1
+  puts "Sorry, thats incorrect #{player_name}. You have #{guesses_left} guesses left"
+  if player_guess < secret_number
+    puts messages[:too_low]
+  else
+    puts messages[:too_high]
+  end
 
 end
 
 if guesses_left == 0
-    # If all guesses are incorrect then put losing message
-    puts messages[:lose]
-    puts "The Secret number was #{secret_number}!"
+  # If all guesses are incorrect then put losing message
+  puts messages[:lose]
+  puts "The Secret number was #{secret_number}!"
 end
