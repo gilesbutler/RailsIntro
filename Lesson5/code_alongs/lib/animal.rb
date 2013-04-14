@@ -5,6 +5,6 @@ class Animal
   end
 
   def get_info
-    puts "#{@pet_name} #{@zoo_keeper}"
+    "The pet name is #{@pet_name} and the zoo keeper is #{@zoo_keeper}"
   end
 end

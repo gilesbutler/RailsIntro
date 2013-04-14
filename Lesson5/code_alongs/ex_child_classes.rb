@@ -19,6 +19,16 @@ require 'lib/animal'
 require 'lib/tiger'
 require 'lib/cat'
 
-t = Tiger.new("Bob", "Dave")
+c = Cat.new('Charlie', 'Giles', 'Anything')
+t = Tiger.new('Lily', 'Bob', 'Pigs')
+
+
+puts c.get_info
+puts c.get_diet
+
 
 puts t.get_info
+puts t.get_diet
+
+puts t.food_type
+puts c.food_type
