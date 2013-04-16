@@ -20,7 +20,7 @@ class Game
 	# Creates a new instance of the SecretNumber class and assigns it to the secret_number. Don't forget to pass along the
 	# necessary parameters.
   # initializes the current guess to nil
-  def initialize(guesses_allowed = 3, set_of_numbers)
+  def initialize(guesses_allowed = 3, set_of_numbers = nil)
     @guesses_allowed = guesses_allowed
     @current_guess_count = 0
     @player = Player.new()
