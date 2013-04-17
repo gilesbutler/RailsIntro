@@ -1,7 +1,12 @@
 require "player"
 require "secret_number"
+require "game_methods"
 
 class Game
+
+  # Include our the game methods module
+  include GameMethods
+
   #	Make sure that all the instance variables in this class may only be READ and not WRITTEN to.
   attr_reader :guesses_allowed, :current_guess_count, :current_guess
 
@@ -31,10 +36,7 @@ class Game
 
 
   # Print who made this wonderful program :-)
-  def print_created_by
-    puts "Game created by Giles Butler"
-  end
-
+  # print_created_by(puts "Game created by Giles Butler")
 
 	# Calls `print_created_by` so that your players knows you created the game.
 	# Asks the player to enter his/her name. Save it to @player.name.
@@ -46,7 +48,7 @@ class Game
 	# If at the end of the loop they still did not guess correctly, tell the player that they have lost using the
 	# `@@messages` class variable and tell them the secret number.
   def start_game
-    print_created_by
+    print_created_by('Giles Butler')
 
     puts "What is your name?"
     @player.name = gets.capitalize.chomp
