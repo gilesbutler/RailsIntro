@@ -60,18 +60,24 @@ class Game
       guess_text = @current_guess_count == 0 ? 'first' : 'next'
 
       puts "What is your #{guess_text} guess?"
-      guess = gets.chomp
 
-      if guess_correct?(guess.to_i)
-        break
+      begin
+        @guess = guess_valid(@set_of_numbers)
+        increment_guess_count(@current_guess_count)
+        if guess_correct?(@guess.to_i)
+          break
+        end
+      rescue
+        puts 'That guess was not in the set of numbers.'
       end
 
-      increment_guess_count()
+      if @current_guess_count == @guesses_allowed
+        puts "#{@@messages[:lose]} The secret number was #{@secret_number}!"
+      end
+
     end
 
-    if @current_guess_count == @guesses_allowed
-      puts "#{@@messages[:lose]} The secret number was #{@secret_number}!"
-    end
+
   end
 
 
@@ -93,12 +99,6 @@ class Game
       end
       false
     end
-  end
-
-
-  # This method should increment every time the player guesses incorrectly.
-  def increment_guess_count
-    @current_guess_count += 1
   end
 
 
