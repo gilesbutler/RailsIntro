@@ -3,7 +3,7 @@ class CreateReviews < ActiveRecord::Migration
     create_table :reviews do |t|
       t.belongs_to :book
       t.belongs_to :user
-      t.text :review
+      t.text :reviews
 
       t.timestamps
     end

@@ -1,0 +1,8 @@
+<h1><%= @user.full_name %> - Reviews</h1>
+
+<dl>
+  <% @user.reviews.each do |review| %>
+  <dt><strong><%= Book.find(review.book_id).title %></strong> by <strong><%= Book.find(review.book_id).author %></strong></dt>
+    <dd><em>"<%= review.review %>"</em></dd>
+  <% end %>
+</dl>

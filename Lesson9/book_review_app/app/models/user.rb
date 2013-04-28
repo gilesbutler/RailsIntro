@@ -1,10 +1,15 @@
 class User < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :email_address, :age
 
+  has_many :reviews
   has_many :books, :through => :reviews
 
   def is_teen?
     (12..19).member?(age)
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
   end
 
   def has_long_name?
