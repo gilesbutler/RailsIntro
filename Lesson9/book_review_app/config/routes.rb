@@ -3,6 +3,7 @@ BookReviewApp::Application.routes.draw do
   # get 'users' => 'users#index'
   # get 'users/show(/:id)' => 'users#show'
 
+  get '/' => 'users#index'
   resources :users, :only => %w(show index)
 
   # The priority is based upon order of creation:
